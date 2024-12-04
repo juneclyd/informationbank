@@ -1,0 +1,106 @@
+* {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+body {
+    margin: 0;
+    background-color:#39645B;
+}
+.documentBackground {
+    /* background-color:#39645B; */
+    width: auto;
+    height: 93vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.documentContent{
+    background-color: #426D64;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+}
+
+.line {
+    background-color:#FCBB7B;
+    width: 100vw;
+    height: 0.2vw;
+    margin: 0 auto
+}
+.cancelSearch {
+    margin-left: 80px;
+    color: red;
+    cursor: pointer;
+    display: none;
+}
+.documentTitle {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5vw;
+    align-items: center;
+}
+.documentTitle h1 {
+    font-size: 3vw;
+    color: white;
+    font-family: Verdana, Tahoma, Times;
+    font-weight: 100;
+    margin: 0;
+    padding: 1.5vw 0;
+}
+.documentTitle input {
+    width: 13vw;
+    height: 3vw;
+    background-color:#628D84;
+    border-radius: 10vw;
+    border: none;
+    outline: none;
+    color:white;
+    text-align: center;
+    font-family: Verdana, Tahoma, Times;
+    font-weight: 100;
+}
+.documentTitle input::-webkit-input-placeholder {  
+    color: white;
+}
+.documentContainer{
+    display: grid;
+    grid-template-columns: 16% 16% 16% 16% 16%;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    height: 500px;
+    width: 549%;
+    /* max-width: 800px; */
+    margin: 0 auto;
+}
+.documentFon {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width: 12vw;
+    height: 14vw;
+    background-color:#628D84;
+    margin-bottom: 70px;
+    border-radius: 20px;
+}
+.documentFon img {
+    width: 8vw;
+    height: 8vw;
+}
+.documentFon span {
+    color:white;
+    margin-top: 17px;
+}
+
+.buttonsBack{
+
+}

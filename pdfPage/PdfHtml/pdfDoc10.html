@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF JS Library</title>
+
+    <style>
+        .title {
+            color: white;
+        }
+        #pdf-container {
+            display: flex;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 717px; /* Ширина контейнера */
+            height: 841px; /* Высота контейнера */
+            overflow: auto; /* Включаем прокрутку */
+        }
+        body {
+            background-color: #2E514B;
+        }
+        #simplebar-track.simplebar-vertical {
+
+        }
+        #simplebar-track.simplebar-horizontal {
+            display: none;
+        }
+    </style>
+    <script src="https://unpkg.com/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="title">Название файла</h1>
+        <div data-simplebar>
+            <div id="pdf-container">
+            </div>
+        </div>
+    </div>
+    <div class="buttonsPage">
+        <a href="../../folderDocument/folderDocument.html" class="buttonsBack"><img src="../img/Button_Back_all_Dark.png" alt=""></a>
+    </div>
+    <script src="../simplebar.js"></script>
+    <script>
+        const pdfUrl = '../../pdfDoc/чертеж.PDF';
+        const container = document.getElementById('pdf-container');
+        
+        // Функция для рендеринга страниц
+        function renderPages(pdfDoc, pageNum) {
+            if (pageNum > pdfDoc.numPages) {
+                // Инициализация SimpleBar после рендеринга всех страниц
+                new SimpleBar(container);
+                console.log("PDF загружен успешно");
+                return;
+            }
+
+            pdfDoc.getPage(pageNum).then(page => {
+                const viewport = page.getViewport({ scale: 1 });
+                const canvas = document.createElement('canvas');
+                container.appendChild(canvas);
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                const renderContext = {
+                    canvasContext: canvas.getContext('2d'),
+                    viewport: viewport,
+                };
+
+                page.render(renderContext).promise.then(() => {
+                    // Рендер следующей страницы
+                    renderPages(pdfDoc, pageNum + 1);
+                });
+            }).catch(err => {
+                console.error('Ошибка при загрузке PDF: ', err);
+            });
+        }
+
+        // Загрузка PDF документа
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => {
+            renderPages(pdfDoc, 1);
+        }).catch(err => {
+            console.error('Ошибка при загрузке PDF: ', err);
+        });
+
+        // document.querySelector('.buttonsBack').addEventListener('click', event => {
+        //     event.preventDefault();
+        // });
+    </script>
+    
+</body>
+<link rel="stylesheet" href="../simplebar.css"/>
+</html>

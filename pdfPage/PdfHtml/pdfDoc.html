@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF JS Library</title>
+
+    <style>
+        .title {
+            color: white;
+        }
+        #pdf-container {
+            display: flex;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 595px; /* Ширина контейнера */
+            height: 841px; /* Высота контейнера */
+            overflow: auto; /* Включаем прокрутку */
+        }
+        body {
+            background-color: #2E514B;
+        }
+        #simplebar-track.simplebar-vertical {
+
+        }
+        #simplebar-track.simplebar-horizontal {
+            display: none;
+        }
+    </style>
+    <script src="https://unpkg.com/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="title">Название файла</h1>
+        <div data-simplebar>
+            <div id="pdf-container" >
+            </div>
+        </div>
+    </div>
+    <div class="buttonsPage">
+        <a href="../../folderDocument/folderDocument.html" class="buttonsBack"><img src="../img/Button_Back_all_Dark.png" alt=""></a>
+    </div>
+    <script src="../simplebar.js"></script>
+    <script>
+        const pdfUrl = '../../pdfDoc/220831_ЛАБЫ_ИСИС_ЛАБ_1_.pdf';
+        const container = document.getElementById('pdf-container');
+        // Load PDF document
+        pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => {
+            const promises = [];
+
+            for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+                promises.push(
+                    pdfDoc.getPage(pageNum).then(page => {
+                        const viewport = page.getViewport({ scale: 1 });
+                        const canvas = document.createElement('canvas');
+                        container.appendChild(canvas);
+                        canvas.width = viewport.width;
+                        canvas.height = viewport.height;
+
+                        const renderContext = {
+                            canvasContext: canvas.getContext('2d'),
+                            viewport: viewport,
+                        };
+                        return page.render(renderContext).promise;
+                    })
+                );
+            }
+
+            return Promise.all(promises);
+            }).then(() => {
+                // Инициализация SimpleBar
+                new SimpleBar(container);
+                console.log("PDF загружен успешно");
+            }).catch(err => {
+                console.error('Ошибка при загрузке PDF: ', err);
+        });
+        document.querySelector('.buttonsBack').addEventListener('click', event => {
+            // event.preventDefault();
+        })
+        </script>
+    
+</body>
+    <link rel="stylesheet" href="../simplebar.css"/>
+</html>
+
+
