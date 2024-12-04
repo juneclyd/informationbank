@@ -5,29 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF JS Library</title>
-
+    <link rel="stylesheet" href="./pdfDoc.css"/>
     <style>
-        .title {
-            color: white;
-        }
-        #pdf-container {
-            display: flex;
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 595px; /* Ширина контейнера */
-            height: 841px; /* Высота контейнера */
-            overflow: auto; /* Включаем прокрутку */
-        }
-        body {
-            background-color: #2E514B;
-        }
-        #simplebar-track.simplebar-vertical {
-
-        }
-        #simplebar-track.simplebar-horizontal {
-            display: none;
-        }
+        
     </style>
     <script src="https://unpkg.com/pdfjs-dist@2.10.377/build/pdf.min.js"></script>
 </head>
@@ -35,9 +15,16 @@
 <body>
     <div>
         <h1 class="title">Название файла</h1>
-        <div data-simplebar>
-            <div id="pdf-container" >
+        
+        <!-- Текст "Загрузка" -->
+        <div id="loading-text" class="loadingio-spinner-spinner-2by998twmg8">
+            <div class="ldio-yzaezf3dcmj">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
             </div>
+          </div>
+
+        <div data-simplebar>
+            <div id="pdf-container"></div>
         </div>
     </div>
     <div class="buttonsPage">
@@ -47,6 +34,8 @@
     <script>
         const pdfUrl = '../../pdfDoc/220831_ЛАБЫ_ИСИС_ЛАБ_1_.pdf';
         const container = document.getElementById('pdf-container');
+        const loadingText = document.getElementById('loading-text'); // Элемент с текстом "Загрузка"
+
         // Load PDF document
         pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc => {
             const promises = [];
@@ -70,20 +59,22 @@
             }
 
             return Promise.all(promises);
-            }).then(() => {
-                // Инициализация SimpleBar
-                new SimpleBar(container);
-                console.log("PDF загружен успешно");
-            }).catch(err => {
-                console.error('Ошибка при загрузке PDF: ', err);
+        }).then(() => {
+            // Инициализация SimpleBar
+            new SimpleBar(container);
+            // Скрываем текст "Загрузка"
+            loadingText.style.display = 'none';
+            console.log("PDF загружен успешно");
+        }).catch(err => {
+            console.error('Ошибка при загрузке PDF: ', err);
+            loadingText.textContent = 'Ошибка при загрузке'; // Если ошибка, показываем текст ошибки
         });
+
         document.querySelector('.buttonsBack').addEventListener('click', event => {
             // event.preventDefault();
-        })
-        </script>
-    
+        });
+    </script>
 </body>
-    <link rel="stylesheet" href="../simplebar.css"/>
+
+<link rel="stylesheet" href="../simplebar.css" />
 </html>
-
-

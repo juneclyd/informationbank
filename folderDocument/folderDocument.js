@@ -458,8 +458,6 @@ const deleteBtn = document.querySelector('.delete');
 
 function getFile(word, stations) {
     return stations.filter(s => {
-      // Определить совпадает ли то что мы вбили в input
-      // названиям станций внутри массива
       
       const regex = new RegExp(word, 'gi');
       return s.title.match(regex);
@@ -543,57 +541,6 @@ document.body.oncontextmenu = function (e) {
         return false;
 };
     
-
-
-
-// document.querySelector('.enter').addEventListener('click', event => {
-//     event.preventDefault();
-//     let child = folderBlock.lastElementChild;
-//     if(inputSearch.value !== '') {
-//         data.folder.forEach((el, index) => {
-//             console.log(inputSearch.value)
-//             console.log(111)
-//             if(el.title.toLocaleLowerCase() === inputSearch.value.toLocaleLowerCase()) {
-//                 while(child) {
-//                     folderBlock.removeChild(child);
-//                     child = folderBlock.lastElementChild;
-//                 }
-//                 cancelSearch.style.display = 'block';
-//                 console.log(2222)
-//                 folderBlock.insertAdjacentHTML('beforeend', `
-//                     <a href="${el.source}" class='documentFon'>
-//                         <img src="${el.photos[0]}" alt="${el.title}">
-//                         <span>${el.title}</span>
-//                     </a>
-//                 `);
-                
-//             } else {
-//                 return
-//             }
-//         })
-//     } else {
-//         return
-//     }
-//     inputSearch.value = '';
-//     container.style.display = 'none';
-// })
-// cancelSearch.addEventListener('click', event => {
-//     event.preventDefault();
-//     cancelSearch.style.display = 'none';
-//     let child = folderBlock.lastElementChild;
-//     while(child) {
-//         folderBlock.removeChild(child);
-//         child = folderBlock.lastElementChild;
-//     }
-//     data.folder.forEach(el => {
-//         folderBlock.insertAdjacentHTML('beforeend', `
-//             <a href="${el.source}" class='documentFon'>
-//                 <img src="${el.photos[0]}" alt="${el.title}">
-//                 <span>${el.title}</span>
-//             </a>
-//         `);
-//     });
-// })
 
 document.querySelector('.buttonsBack').addEventListener('click', event => {
     // event.preventDefault();
