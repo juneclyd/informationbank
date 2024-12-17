@@ -19,8 +19,8 @@ body {
 
 .mainPageContent{
     background-image: url(./img/BackgroundGreen.png);
-    width: 93vw;
-    height: 52vw;
+    width: 1812px;
+    height: 955px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,19 +35,19 @@ body {
     margin: 0 auto
 }
 .mainPageContent h1 {
-    font-size: 3vw;
-    color: white;
-    font-family: "Nunito", sans-serif;
-    font-size: 70px;
-    font-weight: 100;
-    line-height: 95.48px;
-    letter-spacing: 0.27em;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
-    margin: 0;
-    padding: 1.5vw 0;
+        font-size: 3vw;
+        color: white;
+        font-family: "Nunito", sans-serif;
+        font-size: 70px;
+        font-weight: 100;
+        line-height: 95.48px;
+        letter-spacing: 0.27em;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin: 0;
+        padding-top: 56px;
+        padding-bottom: 25px;
 }
 .mainPageContent span {
     font-family: "Nunito", sans-serif;
@@ -58,24 +58,24 @@ body {
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #B0C4BF;
-    padding: 1.5vw 0;
+    margin: 58px 0 80px 0;
 }
 .lineMini {
     background-image: url('./img/line.png');
-    width: 74.4vw;
-    height: 3.56vw;
+    width: 1426.5px;
+    height: 68px;
     margin: 0 auto
 }
 .mainPageContentBtns {
     display: flex;
-    width: 70.4vw;
+    width: 1373px;
     justify-content: space-between;
     align-items:center;
-    padding: 1.5vw 0;
+    margin-top: 80px;
 }
 .btn-posobie {
-    width: 88vw;
-    height: 5.1vw;
+    width: 646px;
+    height: 99px;
     background-image: url('./img/PosobieButton.png');
     display: flex;
     justify-content: center;
@@ -85,8 +85,8 @@ body {
     text-decoration: none;
 }
 .btn-document {
-    width: 88vw;
-    height: 5.1vw;
+    width: 646px;
+    height: 99px;
     background-image: url('./img/DocumentButton.png');
     display: flex;
     justify-content: center;
@@ -94,16 +94,13 @@ body {
     text-align: center;
     cursor: pointer;
     text-decoration: none;
-    margin-right: 3vw;
 }
-.btn:active {
-    background-color:#426D64;
-    transition: 0.1s;
-}
+
+
 .btn span {
     color: white;
 }
 .linkBtn {
     text-decoration: none;
-    padding: 20px 64px;
+    padding: 45px 304px;
 }

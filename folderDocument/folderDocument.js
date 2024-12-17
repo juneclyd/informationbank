@@ -504,7 +504,6 @@ deleteBtn.addEventListener('click', event => {
         dataFilter.forEach(el => {
             folderBlockCopy.insertAdjacentHTML('beforeend', `
                 <a href="${el.source}" class='documentFon'>
-                    <img src="${el.photos[0]}" alt="${el.title}">
                     <span>${el.title}</span>
                 </a>
             `);
@@ -516,7 +515,6 @@ deleteBtn.addEventListener('click', event => {
         dataFilter.forEach(el => {
             folderBlockCopy.insertAdjacentHTML('beforeend', `
                 <a href="${el.source}" class='documentFon'>
-                    <img src="${el.photos[0]}" alt="${el.title}">
                     <span>${el.title}</span>
                 </a>
             `);
@@ -530,7 +528,6 @@ deleteBtn.addEventListener('click', event => {
 data.folder.forEach(el => {
     folderBlock.insertAdjacentHTML('beforeend', `
         <a href="${el.source}" class='documentFon'>
-            <img src="${el.photos[0]}" alt="${el.title}">
             <span>${el.title}</span>
         </a>
     `);
