@@ -3,7 +3,7 @@ const data = {
         {
             "id": 0,
             "title": "Вечное сияние чистого разума",
-            "source": "../folderDocument copy/folderDocument.html",
+            "source": "../pdfPage/PdfHtml/pdfDoc.html",
             "photos": [
                 "https://i.pinimg.com/736x/36/dd/ea/36ddea6c8f3177b8da9351f046814ac1--michel-gondry-eternal-sunshine.jpg",
                 "public/logo192.png"
@@ -478,13 +478,14 @@ keyboardBtns.forEach(button => {
             init.removeChild(child);
             child = init.lastElementChild;
         }
+        
         init.insertAdjacentHTML('beforeend', `<div class='documentContainer' style="width: 100%;"></div>`)
         const folderBlockCopy = document.querySelector('.documentContainer');
         const dataFilter = getFile(inputSearch.value, data.folder);
         dataFilter.forEach(el => {
             folderBlockCopy.insertAdjacentHTML('beforeend', `
                 <a href="${el.source}" class='documentFon'>
-                    <img src="./img/folder.png"">
+                    <img src="./img/Document.png"">
                     <span>${el.title}</span>
                 </a>
             `);
@@ -506,7 +507,7 @@ deleteBtn.addEventListener('click', event => {
         dataFilter.forEach(el => {
             folderBlockCopy.insertAdjacentHTML('beforeend', `
                 <a href="${el.source}" class='documentFon'>
-                    <img src="./img/folder.png" >
+                    <img src="./img/Document.png" >
                     <span>${el.title}</span>
                 </a>
             `);
@@ -518,7 +519,7 @@ deleteBtn.addEventListener('click', event => {
         dataFilter.forEach(el => {
             folderBlockCopy.insertAdjacentHTML('beforeend', `
                 <a href="${el.source}" class='documentFon'>
-                    <img src="./img/folder.png">
+                    <img src="./img/Document.png">
                     <span>${el.title}</span>
                 </a>
             `);
@@ -532,7 +533,7 @@ deleteBtn.addEventListener('click', event => {
 data.folder.forEach(el => {
     folderBlock.insertAdjacentHTML('beforeend', `
         <a href="${el.source}" class='documentFon'>
-            <img src="./img/folder.png">
+            <img src="./img/Document.png">
             <span>${el.title}</span>
         </a>
     `);
